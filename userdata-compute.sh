@@ -27,7 +27,7 @@ Description=Bacalhau Orchestrator Service
 After=network.target docker.service
 
 [Service]
-ExecStart=/usr/local/bin/bacalhau serve --compute -c Compute.Orchestrators=188.245.204.13:4222 -c Compute.Enabled=true --config Compute.AllowListedLocalPaths="/etc/nginx/ssl:r"
+ExecStart=/usr/local/bin/bacalhau serve --compute -c Compute.Orchestrators=188.245.204.13:4222 -c Compute.Enabled=true --config Compute.AllowListedLocalPaths="/etc/nginx/ssl:rw"
 Restart=always
 RestartSec=3
 User=root
