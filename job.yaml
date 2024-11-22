@@ -1,0 +1,23 @@
+Name: Send Certs to Servers
+Type: ops
+Count: 1
+Tasks:
+  - Name: Send Certs to Servers
+    InputSources:
+      - Source:
+          Type: localDirectory
+          Params:
+            SourcePath: /etc/nginx/ssl
+            ReadWrite: true
+        Target: /etc/nginx/ssl
+    Publisher:
+      Type: local
+    Engine:
+      Type: docker
+      Params:
+        Image: docker.io/bacalhauproject/python-runner:2024.08.16.1116
+        EnvironmentVariables:
+          - COMMAND={{.fulltext}}
+          - B64_ENCODED=True
+          - DEBUG=True
+
